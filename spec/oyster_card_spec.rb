@@ -9,7 +9,11 @@ describe OysterCard do
   describe '#top_up' do
     it "adds the specified value" do
       subject.top_up(20)
-      expect(subject.top_up(20)).to eq 40 
+      expect(subject.top_up(20)).to eq 40
+    end
+    it "limits max value at £90" do
+      message = "Attempted to top up beyond max value"
+      expect {subject.top_up(91)}.to raise_error(message)
     end
   end
 

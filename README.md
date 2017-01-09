@@ -1,13 +1,4 @@
-# Oystercard Challenge
-
-This week's challenge will start with going back over the basics we covered last
-week in Boris Bikes, giving you the chance to reinforce what you learned last
-week. You'll then be challenged to build a more complex system which should
-really stretch your skills in Ruby, TDD and object-oriented design.
-
-## Kickoff
-
-In the [kickoff and overview of the week](./kickoff_and_overview_of_the_week.md), we'll talk about some high level techniques for writing object-oriented code that is easy to understand, easy to reuse, and easy to change.
+# Oystercard
 
 ## User Stories
 
@@ -63,7 +54,8 @@ As a customer
 I need to have the correct fare calculated
 ```
 
-## Set up the project:
+## Progress
+
 
   1. [Create a Gemfile](01_create_gemfile.md)
   2. [Create RSpec conventional files](02_initialize_rspec.md)
@@ -71,6 +63,7 @@ I need to have the correct fare calculated
 
 ## Create a basic Oyster card:
   4. [Add the balance](04_adding_balance.md)
+  <!-- 
   5. [Enable top up functionality](05_top_up.md)
   6. [Enforce maximum balance](06_maximum_balance.md)
   7. [Deduct the money](07_deducting_money.md)
@@ -94,4 +87,4 @@ I need to have the correct fare calculated
 ## Make fares depends on zones
   16. [Calculating the fare between zones](16_fare_for_zones.md)
 
-## [Example Code](walkthroughs/example_code)
+## [Example Code](walkthroughs/example_code) -->
