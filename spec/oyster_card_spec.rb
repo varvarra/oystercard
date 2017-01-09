@@ -6,4 +6,11 @@ describe OysterCard do
     end
   end
 
+  describe '#top_up' do
+    it "adds the specified value" do
+      subject.top_up(20)
+      expect(subject.top_up(20)).to eq 40 
+    end
+  end
+
 end
