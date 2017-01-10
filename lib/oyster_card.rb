@@ -1,5 +1,5 @@
 class OysterCard
-  attr_reader :balance, :max_balance, :in_journey
+  attr_reader :balance, :max_balance, :in_journey, :entry_station
   alias_method :in_journey?, :in_journey
 
   MAX_BALANCE = 90
@@ -19,15 +19,17 @@ class OysterCard
   end
 
 
-  def touch_in
+  def touch_in(entry_station)
     msg = "Insufficient funds"
     raise msg if balance < MIN_JOURNEY_FUND
     @in_journey = true
+    @entry_station = entry_station
   end
 
   def touch_out
     @in_journey = false
     deduct(FARE)
+    @entry_station = nil
   end
 
   private
