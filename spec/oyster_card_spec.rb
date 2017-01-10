@@ -44,9 +44,20 @@ require 'oyster_card'
 
     describe "touch_in" do
       context "when you start your journey" do
+        before do
+          subject.top_up(20)
+        end
         it "changes your in journey status" do
           subject.touch_in
           expect(subject).to be_in_journey
+        end
+      end
+      context "when balance is too low" do
+        before do
+          @min_journey_fund = OysterCard::MIN_JOURNEY_FUND
+        end
+        it "raises an error" do
+          expect{subject.touch_in}.to raise_error("Insufficient funds")
         end
       end
     end
