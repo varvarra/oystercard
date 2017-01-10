@@ -27,11 +27,12 @@ require 'oyster_card'
     describe '#deduct' do
       context "when there is enough balance" do
         before do
-          subject.top_up(50)
-          subject.deduct(5)
+          @oc=OysterCard.new
+          @oc.top_up(50)
+          result = @oc.send(:deduct,5)
         end
-        it "can have balance decreased" do
-          expect(subject.balance).to eq(45)
+        it "balance is decreased by given amount" do
+          expect(@oc.balance).to eq(45)
         end
       end
     end

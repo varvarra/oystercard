@@ -18,12 +18,6 @@ class OysterCard
     @balance += amount
   end
 
-  def deduct(amount)
-    msg = "You don't have enough balance"
-    raise msg if balance - amount < 0
-    @balance -= amount
-    #@in_journey = true
-  end
 
   def touch_in
     msg = "Insufficient funds"
@@ -35,4 +29,15 @@ class OysterCard
     @in_journey = false
     deduct(FARE)
   end
+
+  private
+  attr_accessor :deduct
+
+  def deduct(amount)
+    msg = "You don't have enough balance"
+    raise msg if balance - amount < 0
+    @balance -= amount
+    #@in_journey = true
+  end
+
 end
