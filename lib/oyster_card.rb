@@ -1,5 +1,7 @@
 class OysterCard
-  attr_reader :balance, :max_balance, :touch_in
+  attr_reader :balance, :max_balance, :in_journey
+  alias_method :in_journey?, :in_journey
+
   MAX_BALANCE = 90
   MIN_JOURNEY_FUND = 1
 
@@ -20,10 +22,6 @@ class OysterCard
     raise msg if balance - amount < 0
     @balance -= amount
     #@in_journey = true
-  end
-
-  def in_journey?
-    @in_journey
   end
 
   def touch_in
