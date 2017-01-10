@@ -55,7 +55,7 @@ require 'oyster_card'
         end
         it "changes your in journey status" do
           subject.touch_in(entry_station)
-          expect(subject).to be_in_journey
+          expect(subject.in_journey?).to eq true
         end
       end
       context "when balance is too low" do
