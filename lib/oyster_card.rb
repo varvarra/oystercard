@@ -4,6 +4,7 @@ class OysterCard
 
   MAX_BALANCE = 90
   MIN_JOURNEY_FUND = 1
+  FARE = 5
 
   def initialize
     @balance = 0
@@ -32,5 +33,6 @@ class OysterCard
 
   def touch_out
     @in_journey = false
+    deduct(FARE)
   end
 end
