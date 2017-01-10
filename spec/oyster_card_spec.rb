@@ -36,13 +36,13 @@ require 'oyster_card'
       end
     end
 
-    describe "in_journey?" do
+    describe "#in_journey?" do
       it "when created is not in journey" do
         expect(subject).not_to be_in_journey
       end
     end
 
-    describe "touch_in" do
+    describe "#touch_in" do
       context "when you start your journey" do
         before do
           subject.top_up(20)
@@ -62,7 +62,7 @@ require 'oyster_card'
       end
     end
 
-    describe "touch_out" do
+    describe "#touch_out" do
       context "when you finish your journey" do
 
         it "changes your journey status" do
