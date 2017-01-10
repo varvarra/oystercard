@@ -20,7 +20,7 @@ require 'oyster_card'
         subject.top_up(@max_balance)
       end
       it "raises error" do
-        expect{subject.top_up(rand(10))}.to raise_error("Attempted to top up beyond max value of £#{@max_balance}.00")
+        expect{subject.top_up(rand(1..10))}.to raise_error("Attempted to top up beyond max value of £#{@max_balance}.00")
       end
     end
 
@@ -64,10 +64,18 @@ require 'oyster_card'
 
     describe "touch_out" do
       context "when you finish your journey" do
+
         it "changes your journey status" do
+          subject.top_up(20)
           subject.touch_out
           expect(subject).not_to be_in_journey
         end
+
+        it "deducts from your balance" do
+          subject.top_up(20)
+          expect{subject.touch_out}.to change{subject.balance}.by(-5)
+        end
       end
     end
+
 end
