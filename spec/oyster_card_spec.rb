@@ -61,6 +61,12 @@ require 'oyster_card'
           expect{subject.touch_in}.to raise_error("Insufficient funds")
         end
       end
+      context "when you start your journey at a station" do
+        it "remembers the station" do
+          entry_station = double(:station)
+          expect(subject).touch_in
+        end
+      end
     end
 
     describe "#touch_out" do
