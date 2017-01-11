@@ -1,4 +1,5 @@
 require 'oyster_card'
+
   describe OysterCard do
     let (:entry_station) {double :aldgate}
     let (:exit_station) {double :victoria}
@@ -68,6 +69,7 @@ require 'oyster_card'
         expect(subject.journey[:entry_station]).to eq entry_station
       end
     end
+  
 
     describe "#touch_out" do
       before do
