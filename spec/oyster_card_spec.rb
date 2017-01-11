@@ -35,31 +35,33 @@ require 'oyster_card'
     end
 
     describe "#touch_in" do
+      context "when balance is too low" do
+        it "raises an error" do
+          oc = OysterCard.new
+          expect{oc.touch_in(entry_station)}.to raise_error("Insufficient funds")
+        end
+      end
       before do
         @min_journey_fund = OysterCard::MIN_JOURNEY_FUND
+        subject.top_up(20)
       end
 
       context "when you start your journey" do
-        before do
-          subject.top_up(20)
-        end
+
         it "changes your in journey status" do
           subject.touch_in(entry_station)
           expect(subject.in_journey?).to eq true
         end
       end
 
-      context "when balance is too low" do
-        it "raises an error" do
-          expect{subject.touch_in(entry_station)}.to raise_error("Insufficient funds")
-        end
-      end
-
       context "when you start your journey at a station" do
         it "remembers the station" do
-          subject.top_up(@min_journey_fund)
           expect(subject.touch_in(entry_station)).to eq entry_station
         end
+      end
+      it "stores the entry station" do
+        subject.touch_in(entry_station)
+        expect(subject.journey[:entry_station]).to eq entry_station
       end
     end
 
@@ -87,6 +89,12 @@ require 'oyster_card'
         it "remembers the station" do
           expect(subject.touch_out(exit_station)).to eq exit_station
         end
+
+        it "stores the exit_station" do
+          subject.touch_out(exit_station)
+          expect(subject.journey[:exit_station]).to eq exit_station
+        end
+
       end
     end
 
