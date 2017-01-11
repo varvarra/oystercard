@@ -1,3 +1,5 @@
+require_relative "station"
+
 class OysterCard
   attr_accessor :balance, :max_balance, :entry_station, :exit_station, :journey, :journey_history
 
