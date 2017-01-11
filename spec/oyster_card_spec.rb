@@ -1,8 +1,7 @@
 require 'oyster_card'
   describe OysterCard do
-
-    let (:entry_station) {:aldgate}
-    let (:exit_station) {:victoria}
+    let (:entry_station) {double :aldgate}
+    let (:exit_station) {double :victoria}
 
     describe '#balance' do
       it 'has balance of zero' do
@@ -10,6 +9,11 @@ require 'oyster_card'
       end
     end
 
+    describe '#journey_history' do
+      it "returns an empty array" do
+      expect(subject.journey_history).to eq []
+      end
+    end
 
   describe '#top_up' do
     it "adds the specified value" do
@@ -93,6 +97,11 @@ require 'oyster_card'
         it "stores the exit_station" do
           subject.touch_out(exit_station)
           expect(subject.journey[:exit_station]).to eq exit_station
+        end
+
+        it "stores the whole journey" do
+          subject.touch_out(exit_station)
+          expect(subject.journey_history).to include subject.journey
         end
 
       end
