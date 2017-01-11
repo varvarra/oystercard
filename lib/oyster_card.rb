@@ -9,6 +9,7 @@ class OysterCard
     @balance = 0
     @max_balance = MAX_BALANCE
     @journey = Hash.new
+    @journey_history = []
   end
 
   def top_up(amount)
@@ -29,6 +30,7 @@ class OysterCard
     @entry_station = nil
     @exit_station = exit_station
     journey[:exit_station] = @exit_station
+
   end
 
   def in_journey?
