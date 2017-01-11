@@ -8,7 +8,6 @@ class OysterCard
   def initialize
     @balance = 0
     @max_balance = MAX_BALANCE
-    #@journey = Hash.new
     @journey_history = []
   end
 
