@@ -1,10 +1,8 @@
-require 'station'
-require 'oyster_card'
-
+require 'station.rb'
+require 'oyster_card.rb'
 
 describe Station do
-  describe "respond to station class" do
-    expect(subject.zone).to eq zone
+  it "responds to" do
+    expect(subject.zone).to eq subject.zone
   end
-  
 end
