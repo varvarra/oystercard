@@ -1,5 +1,5 @@
 class OysterCard
-  attr_reader :balance, :max_balance, :entry_station
+  attr_reader :balance, :max_balance, :entry_station, :exit_station
 
   MAX_BALANCE = 90
   MIN_JOURNEY_FUND = 1
@@ -22,13 +22,13 @@ class OysterCard
     @entry_station = entry_station
   end
 
-  def touch_out
+  def touch_out(exit_station)
     deduct(FARE)
     @entry_station = nil
+    @exit_station = exit_station
   end
 
   def in_journey?
-    #@entry_station.nil? ? false : true
     !!@entry_station
   end
 
@@ -39,7 +39,6 @@ class OysterCard
     msg = "You don't have enough balance"
     raise msg if balance - amount < 0
     @balance -= amount
-    #@in_journey = true
   end
 
 end
