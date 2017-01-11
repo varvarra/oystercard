@@ -8,7 +8,7 @@ class OysterCard
   def initialize
     @balance = 0
     @max_balance = MAX_BALANCE
-    @journey = Hash.new
+    #@journey = Hash.new
     @journey_history = []
   end
 
@@ -21,6 +21,7 @@ class OysterCard
   def touch_in(entry_station)
     msg = "Insufficient funds"
     raise msg if balance < MIN_JOURNEY_FUND
+    @journey = Hash.new
     @entry_station = entry_station
     journey[:entry_station] = entry_station
   end
@@ -29,7 +30,7 @@ class OysterCard
     deduct(FARE)
     @entry_station = nil
     journey[:exit_station] = exit_station
-    @journey_history << journey
+    journey_history << journey
     exit_station
   end
 
